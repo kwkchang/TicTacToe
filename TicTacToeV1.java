@@ -802,6 +802,28 @@ public class TicTacToeV1 {
 								frame.revalidate();
 								frame.repaint();
 							}
+							else if (b1 == 1 && b8 == 1 && clicked7 == false){
+								btn7.setLabel("O"); // IMPORTANT
+								btn7.setForeground(Color.BLUE);
+								btn7.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 99));
+								turn++;
+								clicked7 = true;
+								b7 = 2;
+
+								frame.revalidate();
+								frame.repaint();
+							}
+							else if (b3 == 1 && b8 == 1 && clicked9 == false){
+								btn9.setLabel("O"); // IMPORTANT
+								btn9.setForeground(Color.BLUE);
+								btn9.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 99));
+								turn++;
+								clicked9 = true;
+								b9 = 2;
+
+								frame.revalidate();
+								frame.repaint();
+							}
 							else if (clicked1 == false){
 								btn1.setLabel("O"); // IMPORTANT
 								btn1.setForeground(Color.BLUE);
@@ -1558,6 +1580,28 @@ public class TicTacToeV1 {
 								turn++;
 								clicked2 = true;
 								b2 = 2;
+
+								frame.revalidate();
+								frame.repaint();
+							}
+							else if (b1 == 1 && b8 == 1 && clicked7 == false){
+								btn7.setLabel("O"); // IMPORTANT
+								btn7.setForeground(Color.BLUE);
+								btn7.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 99));
+								turn++;
+								clicked7 = true;
+								b7 = 2;
+
+								frame.revalidate();
+								frame.repaint();
+							}
+							else if (b3 == 1 && b8 == 1 && clicked9 == false){
+								btn9.setLabel("O"); // IMPORTANT
+								btn9.setForeground(Color.BLUE);
+								btn9.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 99));
+								turn++;
+								clicked9 = true;
+								b9 = 2;
 
 								frame.revalidate();
 								frame.repaint();
@@ -2321,6 +2365,28 @@ public class TicTacToeV1 {
 								frame.revalidate();
 								frame.repaint();
 							}
+							else if (b1 == 1 && b8 == 1 && clicked7 == false){
+								btn7.setLabel("O"); // IMPORTANT
+								btn7.setForeground(Color.BLUE);
+								btn7.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 99));
+								turn++;
+								clicked7 = true;
+								b7 = 2;
+
+								frame.revalidate();
+								frame.repaint();
+							}
+							else if (b3 == 1 && b8 == 1 && clicked9 == false){
+								btn9.setLabel("O"); // IMPORTANT
+								btn9.setForeground(Color.BLUE);
+								btn9.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 99));
+								turn++;
+								clicked9 = true;
+								b9 = 2;
+
+								frame.revalidate();
+								frame.repaint();
+							}
 							else if (clicked1 == false){
 								btn1.setLabel("O"); // IMPORTANT
 								btn1.setForeground(Color.BLUE);
@@ -3076,6 +3142,28 @@ public class TicTacToeV1 {
 								turn++;
 								clicked2 = true;
 								b2 = 2;
+
+								frame.revalidate();
+								frame.repaint();
+							}
+							else if (b1 == 1 && b8 == 1 && clicked7 == false){
+								btn7.setLabel("O"); // IMPORTANT
+								btn7.setForeground(Color.BLUE);
+								btn7.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 99));
+								turn++;
+								clicked7 = true;
+								b7 = 2;
+
+								frame.revalidate();
+								frame.repaint();
+							}
+							else if (b3 == 1 && b8 == 1 && clicked9 == false){
+								btn9.setLabel("O"); // IMPORTANT
+								btn9.setForeground(Color.BLUE);
+								btn9.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 99));
+								turn++;
+								clicked9 = true;
+								b9 = 2;
 
 								frame.revalidate();
 								frame.repaint();
@@ -3870,6 +3958,28 @@ public class TicTacToeV1 {
 								frame.revalidate();
 								frame.repaint();
 							}
+							else if (b1 == 1 && b8 == 1 && clicked7 == false){
+								btn7.setLabel("O"); // IMPORTANT
+								btn7.setForeground(Color.BLUE);
+								btn7.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 99));
+								turn++;
+								clicked7 = true;
+								b7 = 2;
+
+								frame.revalidate();
+								frame.repaint();
+							}
+							else if (b3 == 1 && b8 == 1 && clicked9 == false){
+								btn9.setLabel("O"); // IMPORTANT
+								btn9.setForeground(Color.BLUE);
+								btn9.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 99));
+								turn++;
+								clicked9 = true;
+								b9 = 2;
+
+								frame.revalidate();
+								frame.repaint();
+							}
 							else if (clicked1 == false){
 								btn1.setLabel("O"); // IMPORTANT
 								btn1.setForeground(Color.BLUE);
@@ -4631,6 +4741,28 @@ public class TicTacToeV1 {
 								frame.revalidate();
 								frame.repaint();
 							}
+							else if (b1 == 1 && b8 == 1 && clicked7 == false){
+								btn7.setLabel("O"); // IMPORTANT
+								btn7.setForeground(Color.BLUE);
+								btn7.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 99));
+								turn++;
+								clicked7 = true;
+								b7 = 2;
+
+								frame.revalidate();
+								frame.repaint();
+							}
+							else if (b3 == 1 && b8 == 1 && clicked9 == false){
+								btn9.setLabel("O"); // IMPORTANT
+								btn9.setForeground(Color.BLUE);
+								btn9.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 99));
+								turn++;
+								clicked9 = true;
+								b9 = 2;
+
+								frame.revalidate();
+								frame.repaint();
+							}
 							else if (clicked1 == false){
 								btn1.setLabel("O"); // IMPORTANT
 								btn1.setForeground(Color.BLUE);
@@ -5388,6 +5520,28 @@ public class TicTacToeV1 {
 								turn++;
 								clicked2 = true;
 								b2 = 2;
+
+								frame.revalidate();
+								frame.repaint();
+							}
+							else if (b1 == 1 && b8 == 1 && clicked7 == false){
+								btn7.setLabel("O"); // IMPORTANT
+								btn7.setForeground(Color.BLUE);
+								btn7.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 99));
+								turn++;
+								clicked7 = true;
+								b7 = 2;
+
+								frame.revalidate();
+								frame.repaint();
+							}
+							else if (b3 == 1 && b8 == 1 && clicked9 == false){
+								btn9.setLabel("O"); // IMPORTANT
+								btn9.setForeground(Color.BLUE);
+								btn9.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 99));
+								turn++;
+								clicked9 = true;
+								b9 = 2;
 
 								frame.revalidate();
 								frame.repaint();
