@@ -3980,6 +3980,17 @@ public class TicTacToeV1 {
 								frame.revalidate();
 								frame.repaint();
 							}
+							else if (b6 == 1 && b8 == 1 && clicked9 == false){
+								btn9.setLabel("O"); // IMPORTANT
+								btn9.setForeground(Color.BLUE);
+								btn9.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 99));
+								turn++;
+								clicked9 = true;
+								b9 = 2;
+
+								frame.revalidate();
+								frame.repaint();
+							}
 							else if (clicked1 == false){
 								btn1.setLabel("O"); // IMPORTANT
 								btn1.setForeground(Color.BLUE);
@@ -5536,6 +5547,17 @@ public class TicTacToeV1 {
 								frame.repaint();
 							}
 							else if (b3 == 1 && b8 == 1 && clicked9 == false){
+								btn9.setLabel("O"); // IMPORTANT
+								btn9.setForeground(Color.BLUE);
+								btn9.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 99));
+								turn++;
+								clicked9 = true;
+								b9 = 2;
+
+								frame.revalidate();
+								frame.repaint();
+							}
+							else if (b6 == 1 && b8 == 1 && clicked9 == false){
 								btn9.setLabel("O"); // IMPORTANT
 								btn9.setForeground(Color.BLUE);
 								btn9.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 99));
