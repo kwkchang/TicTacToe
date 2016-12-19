@@ -19,8 +19,8 @@ public class TicTacToeV1 {
 	int b1, b2, b3, b4, b5, b6, b7, b8, b9 = 0;		
 	//will later be changed to reflect value in the box (ie 'X' will be represented by 1, 'O' will be represented by 2)
 
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField Name1;
+	private JTextField Name2;
 
 	/**
 	 * 
@@ -6459,17 +6459,17 @@ public class TicTacToeV1 {
 				frame.revalidate();
 				frame.repaint();
 
-				textField_1 = new JTextField();
-				textField_1.setBounds(316, 182, 186, 32);
-				frame.getContentPane().add(textField_1);
-				textField_1.setColumns(10);
+				Name1 = new JTextField();
+				Name1.setBounds(316, 182, 186, 32);
+				frame.getContentPane().add(Name1);
+				Name1.setColumns(10);
 				frame.revalidate();
 				frame.repaint();
 
-				textField_2 = new JTextField();
-				textField_2.setBounds(316, 280, 186, 32);
-				frame.getContentPane().add(textField_2);
-				textField_2.setColumns(10);
+				Name2 = new JTextField();
+				Name2.setBounds(316, 280, 186, 32);
+				frame.getContentPane().add(Name2);
+				Name2.setColumns(10);
 				frame.revalidate();
 				frame.repaint();
 
@@ -6484,13 +6484,13 @@ public class TicTacToeV1 {
 
 					public void actionPerformed(ActionEvent e) {
 
-						String name1 = textField_1.getText();
-						String name2 = textField_2.getText();
+						String name1 = Name1.getText();
+						String name2 = Name2.getText();
 
 						frame.getContentPane().remove(entername1);
 						frame.getContentPane().remove(entername2);
-						frame.getContentPane().remove(textField_1);
-						frame.getContentPane().remove(textField_2);
+						frame.getContentPane().remove(Name1);
+						frame.getContentPane().remove(Name2);
 						frame.getContentPane().remove(btnLetsGooooo);
 
 						JLabel lblp1turn = new JLabel(name1 + "'s Turn");
@@ -6509,8 +6509,42 @@ public class TicTacToeV1 {
 						JButton btn1 = new JButton("");
 						btn1.setBounds(56, 143, 141, 141);
 						frame.getContentPane().add(btn1);
+						
+						JButton btn2 = new JButton("");
+						btn2.setBounds(220, 143, 141, 141);
+						frame.getContentPane().add(btn2);
+						
+						JButton btn3 = new JButton("");
+						btn3.setBounds(385, 143, 141, 141);
+						frame.getContentPane().add(btn3);
+						
+						JButton btn4 = new JButton("");
+						btn4.setBounds(56, 305, 141, 141);
+						frame.getContentPane().add(btn4);
+						
+						JButton btn5 = new JButton("");
+						btn5.setBounds(220, 305, 141, 141);
+						frame.getContentPane().add(btn5);
+						
+						JButton btn6 = new JButton("");
+						btn6.setBounds(385, 305, 141, 141);
+						frame.getContentPane().add(btn6);
+						
+						JButton btn7 = new JButton("");
+						btn7.setBounds(56, 467, 141, 141);
+						frame.getContentPane().add(btn7);
+						
+						JButton btn8 = new JButton("");
+						btn8.setBounds(220, 467, 141, 141);
+						frame.getContentPane().add(btn8);
+						
+						JButton btn9 = new JButton("");
+						btn9.setBounds(385, 467, 141, 141);
+						frame.getContentPane().add(btn9);
+						
 						frame.revalidate();
 						frame.repaint();
+						
 						btn1.addActionListener(new ActionListener() {
 							@SuppressWarnings("deprecation")
 							public void actionPerformed(ActionEvent arg0) {
@@ -6556,6 +6590,7 @@ public class TicTacToeV1 {
 										frame.repaint();
 										clicked1 = clicked2 = clicked3 = clicked4 = clicked5 = clicked6 = clicked7 = clicked8 = clicked9 = true;
 									}
+										
 									else if ((b1 == 2 && b2 == 2 && b3 == 2) || (b4 == 2 && b5 == 2 && b6 == 2)
 											|| (b7 == 2 && b8 == 2 && b9 == 2) || (b1 == 2 && b4 == 2 && b7 == 2)
 											|| (b2 == 2 && b5 == 2 && b8 == 2) || (b3 == 2 && b6 == 2 && b9 == 2)
@@ -6580,13 +6615,17 @@ public class TicTacToeV1 {
 										frame.revalidate();
 										frame.repaint();
 									}
+									
+									
 								}
-							}
-						});
+								}
+							
+							});
+						
+						
+					
 
-						JButton btn2 = new JButton("");
-						btn2.setBounds(220, 143, 141, 141);
-						frame.getContentPane().add(btn2);
+						
 						btn2.addActionListener(new ActionListener() {
 							// @SuppressWarnings("deprecation")
 							@SuppressWarnings("deprecation")
@@ -6658,9 +6697,7 @@ public class TicTacToeV1 {
 							}
 						});
 
-						JButton btn3 = new JButton("");
-						btn3.setBounds(385, 143, 141, 141);
-						frame.getContentPane().add(btn3);
+						
 						btn3.addActionListener(new ActionListener() {
 							// @SuppressWarnings("deprecation")
 							@SuppressWarnings("deprecation")
@@ -6730,9 +6767,7 @@ public class TicTacToeV1 {
 								}
 							}
 						});
-						JButton btn4 = new JButton("");
-						btn4.setBounds(56, 305, 141, 141);
-						frame.getContentPane().add(btn4);
+						
 						btn4.addActionListener(new ActionListener() {
 							// @SuppressWarnings("deprecation")
 							@SuppressWarnings("deprecation")
@@ -6804,9 +6839,7 @@ public class TicTacToeV1 {
 							}
 						});
 
-						JButton btn5 = new JButton("");
-						btn5.setBounds(220, 305, 141, 141);
-						frame.getContentPane().add(btn5);
+						
 						btn5.addActionListener(new ActionListener() {
 							// @SuppressWarnings("deprecation")
 							@SuppressWarnings("deprecation")
@@ -6878,9 +6911,7 @@ public class TicTacToeV1 {
 							}
 						});
 
-						JButton btn6 = new JButton("");
-						btn6.setBounds(385, 305, 141, 141);
-						frame.getContentPane().add(btn6);
+						
 						btn6.addActionListener(new ActionListener() {
 							// @SuppressWarnings("deprecation")
 							@SuppressWarnings("deprecation")
@@ -6952,9 +6983,7 @@ public class TicTacToeV1 {
 							}
 						});
 
-						JButton btn7 = new JButton("");
-						btn7.setBounds(56, 467, 141, 141);
-						frame.getContentPane().add(btn7);
+					
 						btn7.addActionListener(new ActionListener() {
 							// @SuppressWarnings("deprecation")
 							@SuppressWarnings("deprecation")
@@ -7026,9 +7055,7 @@ public class TicTacToeV1 {
 							}
 						});
 
-						JButton btn8 = new JButton("");
-						btn8.setBounds(220, 467, 141, 141);
-						frame.getContentPane().add(btn8);
+						
 						btn8.addActionListener(new ActionListener() {
 							// @SuppressWarnings("deprecation")
 							@SuppressWarnings("deprecation")
@@ -7102,9 +7129,7 @@ public class TicTacToeV1 {
 
 						
 
-						JButton btn9 = new JButton("");
-						btn9.setBounds(385, 467, 141, 141);
-						frame.getContentPane().add(btn9);
+						
 						btn9.addActionListener(new ActionListener() {
 							// @SuppressWarnings("deprecation")
 							@SuppressWarnings("deprecation")
