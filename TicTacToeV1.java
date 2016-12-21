@@ -12,17 +12,20 @@ public class TicTacToeV1 {
 
 	private JFrame frame;
 
-	int turn = 1;
+	int turn = 1; //will be incremented after each turn.
 	boolean clicked1 = false, clicked2 = false, clicked3 = false, clicked4 = false, clicked5 = false, clicked6 = false,
-			clicked7 = false, clicked8 = false, clicked9 = false;
+			clicked7 = false, clicked8 = false, clicked9 = false; //will be set to true once the player or computer has selected a button.
 
 	int b1, b2, b3, b4, b5, b6, b7, b8, b9 = 0;		
 	//will later be changed to reflect value in the box (ie 'X' will be represented by 1, 'O' will be represented by 2)
+	
+	int winCount1 = 0;
+	int winCount2 = 0;
 
 	boolean computerwins = false; //Only used for "tie" code for 1 player, "Go Second" mode.
 	
-	private JTextField Name1;
-	private JTextField Name2;
+	private JTextField Name1; //The textbox where player1 will insert his name.
+	private JTextField Name2; //The textbox where player2 will insert his name.
 
 	/**
 	 * 
@@ -63,54 +66,78 @@ public class TicTacToeV1 {
 
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 600, 800);
+		//setting the title of the frame.
+		frame.setTitle("Tic Tac Toe"); 
+		//the boundaries for the window.
+		frame.setBounds(100, 100, 600, 800); 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
+		//creating a label called lblWelcome.
 		JLabel lblWelcome = new JLabel("Welcome to Kyle and Andre's Tic Tac Toe!");
+		//setting the font and size of the label.
 		lblWelcome.setFont(new Font("Lucida Bright", Font.BOLD, 26));
+		//location of the label.
 		lblWelcome.setBounds(10, 11, 555, 88);
+		//adds lblWelcome to the homepage.
 		frame.getContentPane().add(lblWelcome);
 
+		//creating a button called btn1Player.
 		JButton btn1Player = new JButton("1 player");
+		//setting the font and size of the button.
 		btn1Player.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		//location of the button.
 		btn1Player.setBounds(88, 110, 117, 23);
+		//adds btn1Player to the homepage.
 		frame.getContentPane().add(btn1Player);
 
+		//creating a button called btn2Players.
 		JButton btn2Players = new JButton("2 players");
+		//setting the font and size of the button.
 		btn2Players.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
+		//location of the button.
 		btn2Players.setBounds(385, 110, 117, 23);
+		//adds btn2Players to the homepage.
 		frame.getContentPane().add(btn2Players);
-
+		
+		
+		//what happens to the screen when btn1Player is clicked.
 		btn1Player.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 
+				//btn1Player, btn2Players, and lblWelcome are removed from view.
 				frame.getContentPane().remove(btn1Player);
 				frame.getContentPane().remove(btn2Players);
+				frame.getContentPane().remove(lblWelcome);
 
+				//a new button called btnGoFirst is created, and added to the screen.
 				JButton btnGoFirst = new JButton("Go First");
 				btnGoFirst.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
 				btnGoFirst.setBounds(88, 110, 117, 23);
 				frame.getContentPane().add(btnGoFirst);
 
+				//a new button called btnGoSecond is created, and added to the screen.
 				JButton btnGoSecond = new JButton("Go Second");
 				btnGoSecond.setFont(new Font("Lucida Bright", Font.PLAIN, 15));
 				btnGoSecond.setBounds(385, 110, 117, 23);
 				frame.getContentPane().add(btnGoSecond);
 
-				frame.getContentPane().remove(lblWelcome);
+				//these two lines are used throughout the code to reset the screen with new changes.
 				frame.revalidate();
 				frame.repaint();
 
+				
+				//what happens to the screen when btnGoFirst is clicked.
 				btnGoFirst.addActionListener(new ActionListener() {
 
 					public void actionPerformed(ActionEvent e) {
 
+						//btnGoFirst and btnGoSecond are removed.
 						frame.getContentPane().remove(btnGoFirst);
 						frame.getContentPane().remove(btnGoSecond);
 
-
+						//9 buttons are created, with their locations defined, and are added to the screen to form the Tic Tac Toe board.
 						JButton btn1 = new JButton("");
 						btn1.setBounds(56, 143, 141, 141);
 						frame.getContentPane().add(btn1);
@@ -150,7 +177,29 @@ public class TicTacToeV1 {
 						frame.revalidate();
 						frame.repaint();
 
-
+						/*The AI for when the human chooses to go first is composed of 3 main "if" statements.
+						 *The human's moves are shown in a red 'X' and the computer's moves are shown in a blue 'O'.
+						 *
+						 *The FIRST "if" statement runs if the human clicks the button on the first turn. 
+						 *Then, turn is incremented, assignments are made to the variable clickedX (where X is the button number) to true so it can't be clicked again, and bX (where X is the button number) to 1 to be used for the win code.
+						 *
+						 *The SECOND "if" statement sets the computer's first turn. If the human didn't go in btn5 (the middle), the computer will go there.
+						 *If the human went into the middle for its first turn, the computer goes to btn1 (top left).
+						 *
+						 *The THIRD "if" statement is the most complicated. It can be broken down further into five parts.
+						 *PART 1 - If the human clicks the corresponding button and there has been more than 3 turns and the button hasn't been clicked, it is labelled as 'X'.
+						 *Then, turn is incremented, assignments are made to the variable clickedX (where X is the button number) to true so it can't be clicked again, and bX (where X is the button number) to 1 to be used for the win code.
+						 *PART 2 (which runs if PART 1 has occurred) - The computer now checks if there is a way to win. The 24 different scenarios of being 1 click away from winning are checked.
+						 *If one of thse scenarios are met, the computer will make its move to win & lblYouLose will appear. If none of these scenarios are available, PART 3 runs.
+						 *PART 3 - Checks to see if the player is about to win. 
+						 *The 24 scenarios of where the human is one click away from winning is checked, and the computer clicks the button which blocks the human.
+						 *A few exceptions have been added to this part so that the human can't "fork" (ie two ways of winning) the computer.
+						 *If none of these scenarios are available, PART 4 runs.
+						 *PART 4 - The computer moves to an empty square. clicked5 is omitted because it'll always be occupated after the first two turns.
+						 *clicked9 is omitted because the computer will never have the last move if it goes second.
+						 *clickedX (where X is the button number) is omitted. Ie clicked6 is not checked in the btn6 event.
+						 *PART 5 - Is the tie code. If all the buttons are clicked and the computer hasn't won, lbltie will appear.
+						 */
 						btn1.addActionListener(new ActionListener() {
 							@SuppressWarnings("deprecation")
 							public void actionPerformed(ActionEvent arg0) {
@@ -12870,6 +12919,7 @@ public class TicTacToeV1 {
 
 			}
 		});
+	
 
 		btn2Players.addActionListener(new ActionListener() {
 
@@ -12918,8 +12968,8 @@ public class TicTacToeV1 {
 
 					public void actionPerformed(ActionEvent e) {
 
-						String name1 = Name1.getText();
-						String name2 = Name2.getText();
+						String player1name = Name1.getText();
+						String player2name = Name2.getText();
 
 						frame.getContentPane().remove(entername1);
 						frame.getContentPane().remove(entername2);
@@ -12927,14 +12977,14 @@ public class TicTacToeV1 {
 						frame.getContentPane().remove(Name2);
 						frame.getContentPane().remove(btnLetsGooooo);
 
-						JLabel lblp1turn = new JLabel(name1 + "'s Turn");
+						JLabel lblp1turn = new JLabel(player1name + "'s Turn");
 						lblp1turn.setFont(new Font("Lucida Bright", Font.PLAIN, 36));
 						lblp1turn.setBounds(20, 67, 500, 60);
 						frame.getContentPane().add(lblp1turn);
 						frame.revalidate();
 						frame.repaint();
 
-						JLabel lblp2turn = new JLabel(name2 + "'s Turn");
+						JLabel lblp2turn = new JLabel(player2name + "'s Turn");
 						lblp2turn.setFont(new Font("Lucida Bright", Font.PLAIN, 36));
 						lblp2turn.setBounds(20, 67, 500, 60);
 						frame.revalidate();
@@ -12944,7 +12994,7 @@ public class TicTacToeV1 {
 						btnreplay.setFont(new Font("Lucida Bright", Font.PLAIN, 26));
 						btnreplay.setBounds(56, 650, 141, 40);
 						frame.getContentPane().add(btnreplay);
-											
+
 						JButton btnmenu = new JButton("Menu");
 						btnmenu.setFont(new Font("Lucida Bright", Font.PLAIN, 26));
 						btnmenu.setBounds(385, 650, 141, 40);
@@ -12989,36 +13039,85 @@ public class TicTacToeV1 {
 						frame.revalidate();
 						frame.repaint();
 						
-						JLabel lblPlayer1Wins = new JLabel(name1 + " Wins!");
-						JLabel lblPlayer2Wins = new JLabel(name2 + " Wins!");
+						JLabel lblPlayer1Wins = new JLabel(player1name + " Wins!");
+						JLabel lblPlayer2Wins = new JLabel(player2name + " Wins!");
 						JLabel lbltie = new JLabel("Tie Game!");
 						frame.revalidate();
 						frame.repaint();
+					
+						JLabel lblscore = new JLabel(player1name + ": " + winCount1
+								+ "          " + player2name + ": " + winCount2);
+						lblscore.setFont(new Font("Lucida Bright", Font.PLAIN, 22));
+						lblscore.setBounds(56, 20, 500, 60);
+						frame.getContentPane().add(lblscore);
 						
-						btnreplay.addActionListener(new ActionListener() {
-							@SuppressWarnings({ "deprecation", "unused" })
+						btnmenu.addActionListener(new ActionListener() {
+					
 							public void actionPerformed(ActionEvent arg0) {
+								
+								frame.getContentPane().removeAll();
 								
 								turn = 1;
 								clicked1 = clicked2 = clicked3 = clicked4 = clicked5 = clicked6 = clicked7 = clicked8 = clicked9 = false;
+								b1 = b2 = b3 = b4 = b5 = b6 = b7 = b8 = b9 = 0;
+								winCount1 = 0;
+								winCount2 = 0;
+
+								btn1.setLabel("");
+								btn2.setLabel("");
+								btn3.setLabel("");
+								btn4.setLabel("");
+								btn5.setLabel("");
+								btn6.setLabel("");
+								btn7.setLabel("");
+								btn8.setLabel("");
+								btn9.setLabel("");
 							
-								int b1 = b2 = b3 = b4 = b5 = b6 = b7 = b8 = b9 = 0;
+								frame.revalidate();
+								frame.repaint();
+								frame.getContentPane().add(lblWelcome);				
+								frame.getContentPane().add(btn1Player);
+								frame.getContentPane().add(btn2Players);
 								
-								btn1.setLabel(""); btn2.setLabel(""); btn3.setLabel(""); btn4.setLabel(""); btn5.setLabel("");
-								btn6.setLabel(""); btn7.setLabel(""); btn8.setLabel(""); btn9.setLabel("");
+								frame.revalidate();
+								frame.repaint();
 								
+							}
+						});
+							
+							
+
+						btnreplay.addActionListener(new ActionListener() {
+							@SuppressWarnings({ "deprecation", "unused" })
+							public void actionPerformed(ActionEvent arg0) {
+
+								turn = 1;
+								clicked1 = clicked2 = clicked3 = clicked4 = clicked5 = clicked6 = clicked7 = clicked8 = clicked9 = false;
+
+								b1 = b2 = b3 = b4 = b5 = b6 = b7 = b8 = b9 = 0;
+
+								
+								btn1.setLabel("");
+								btn2.setLabel("");
+								btn3.setLabel("");
+								btn4.setLabel("");
+								btn5.setLabel("");
+								btn6.setLabel("");
+								btn7.setLabel("");
+								btn8.setLabel("");
+								btn9.setLabel("");
+
 								frame.getContentPane().remove(lblp1turn);
 								frame.getContentPane().remove(lblp2turn);
 								frame.getContentPane().remove(lblPlayer1Wins);
 								frame.getContentPane().remove(lblPlayer2Wins);
 								frame.getContentPane().remove(lbltie);
 								frame.getContentPane().add(lblp1turn);
-								
+
 								frame.revalidate();
 								frame.repaint();
 							}
 						});
-							
 						
 						btn1.addActionListener(new ActionListener() {
 							@SuppressWarnings("deprecation")
@@ -13057,7 +13156,7 @@ public class TicTacToeV1 {
 											|| (b2 == 1 && b5 == 1 && b8 == 1) || (b3 == 1 && b6 == 1 && b9 == 1)
 											|| (b1 == 1 && b5 == 1 && b9 == 1) || (b3 == 1 && b5 == 1 && b7 == 1)) {
 										frame.getContentPane().remove(lblp2turn);
-										lblPlayer1Wins.setText(name1 + " Wins!");
+										lblPlayer1Wins.setText(player1name + " Wins!");
 										lblPlayer1Wins.setFont(new Font("Lucida Bright", Font.PLAIN, 36));
 										lblPlayer1Wins.setBounds(20, 67, 500, 60);
 										frame.getContentPane().add(lblPlayer1Wins);
@@ -13071,7 +13170,7 @@ public class TicTacToeV1 {
 											|| (b2 == 2 && b5 == 2 && b8 == 2) || (b3 == 2 && b6 == 2 && b9 == 2)
 											|| (b1 == 2 && b5 == 2 && b9 == 2) || (b3 == 2 && b5 == 2 && b7 == 2)) {
 										frame.getContentPane().remove(lblp1turn);
-										lblPlayer2Wins.setText(name2 + " Wins!");
+										lblPlayer2Wins.setText(player2name + " Wins!");
 										lblPlayer2Wins.setFont(new Font("Lucida Bright", Font.PLAIN, 36));
 										lblPlayer2Wins.setBounds(20, 67, 500, 60);
 										frame.getContentPane().add(lblPlayer2Wins);
@@ -13137,7 +13236,7 @@ public class TicTacToeV1 {
 											|| (b2 == 1 && b5 == 1 && b8 == 1) || (b3 == 1 && b6 == 1 && b9 == 1)
 											|| (b1 == 1 && b5 == 1 && b9 == 1) || (b3 == 1 && b5 == 1 && b7 == 1)) {
 										frame.getContentPane().remove(lblp2turn);
-										lblPlayer1Wins.setText(name1 + " Wins!");
+										lblPlayer1Wins.setText(player1name + " Wins!");
 										lblPlayer1Wins.setFont(new Font("Lucida Bright", Font.PLAIN, 36));
 										lblPlayer1Wins.setBounds(20, 67, 500, 60);
 										frame.getContentPane().add(lblPlayer1Wins);
@@ -13150,7 +13249,7 @@ public class TicTacToeV1 {
 											|| (b2 == 2 && b5 == 2 && b8 == 2) || (b3 == 2 && b6 == 2 && b9 == 2)
 											|| (b1 == 2 && b5 == 2 && b9 == 2) || (b3 == 2 && b5 == 2 && b7 == 2)) {
 										frame.getContentPane().remove(lblp1turn);
-										lblPlayer2Wins.setText(name2 + " Wins!");
+										lblPlayer2Wins.setText(player2name + " Wins!");
 										lblPlayer2Wins.setFont(new Font("Lucida Bright", Font.PLAIN, 36));
 										lblPlayer2Wins.setBounds(20, 67, 500, 60);
 										frame.getContentPane().add(lblPlayer2Wins);
@@ -13208,7 +13307,7 @@ public class TicTacToeV1 {
 											|| (b2 == 1 && b5 == 1 && b8 == 1) || (b3 == 1 && b6 == 1 && b9 == 1)
 											|| (b1 == 1 && b5 == 1 && b9 == 1) || (b3 == 1 && b5 == 1 && b7 == 1)) {
 										frame.getContentPane().remove(lblp2turn);
-										lblPlayer1Wins.setText(name1 + " Wins!");
+										lblPlayer1Wins.setText(player1name + " Wins!");
 										lblPlayer1Wins.setFont(new Font("Lucida Bright", Font.PLAIN, 36));
 										lblPlayer1Wins.setBounds(20, 67, 500, 60);
 										frame.getContentPane().add(lblPlayer1Wins);
@@ -13221,7 +13320,7 @@ public class TicTacToeV1 {
 											|| (b2 == 2 && b5 == 2 && b8 == 2) || (b3 == 2 && b6 == 2 && b9 == 2)
 											|| (b1 == 2 && b5 == 2 && b9 == 2) || (b3 == 2 && b5 == 2 && b7 == 2)) {
 										frame.getContentPane().remove(lblp1turn);
-										lblPlayer2Wins.setText(name2 + " Wins!");
+										lblPlayer2Wins.setText(player2name + " Wins!");
 										lblPlayer2Wins.setFont(new Font("Lucida Bright", Font.PLAIN, 36));
 										lblPlayer2Wins.setBounds(20, 67, 500, 60);
 										frame.getContentPane().add(lblPlayer2Wins);
@@ -13278,7 +13377,7 @@ public class TicTacToeV1 {
 											|| (b2 == 1 && b5 == 1 && b8 == 1) || (b3 == 1 && b6 == 1 && b9 == 1)
 											|| (b1 == 1 && b5 == 1 && b9 == 1) || (b3 == 1 && b5 == 1 && b7 == 1)) {
 										frame.getContentPane().remove(lblp2turn);
-										lblPlayer1Wins.setText(name1 + " Wins!");
+										lblPlayer1Wins.setText(player1name + " Wins!");
 										lblPlayer1Wins.setFont(new Font("Lucida Bright", Font.PLAIN, 36));
 										lblPlayer1Wins.setBounds(20, 67, 500, 60);
 										frame.getContentPane().add(lblPlayer1Wins);
@@ -13291,7 +13390,7 @@ public class TicTacToeV1 {
 											|| (b2 == 2 && b5 == 2 && b8 == 2) || (b3 == 2 && b6 == 2 && b9 == 2)
 											|| (b1 == 2 && b5 == 2 && b9 == 2) || (b3 == 2 && b5 == 2 && b7 == 2)) {
 										frame.getContentPane().remove(lblp1turn);
-										lblPlayer2Wins.setText(name2 + " Wins!");
+										lblPlayer2Wins.setText(player2name + " Wins!");
 										lblPlayer2Wins.setFont(new Font("Lucida Bright", Font.PLAIN, 36));
 										lblPlayer2Wins.setBounds(20, 67, 500, 60);
 										frame.getContentPane().add(lblPlayer2Wins);
@@ -13350,7 +13449,7 @@ public class TicTacToeV1 {
 											|| (b2 == 1 && b5 == 1 && b8 == 1) || (b3 == 1 && b6 == 1 && b9 == 1)
 											|| (b1 == 1 && b5 == 1 && b9 == 1) || (b3 == 1 && b5 == 1 && b7 == 1)) {
 										frame.getContentPane().remove(lblp2turn);
-										lblPlayer1Wins.setText(name1 + " Wins!");
+										lblPlayer1Wins.setText(player1name + " Wins!");
 										lblPlayer1Wins.setFont(new Font("Lucida Bright", Font.PLAIN, 36));
 										lblPlayer1Wins.setBounds(20, 67, 500, 60);
 										frame.getContentPane().add(lblPlayer1Wins);
@@ -13363,7 +13462,7 @@ public class TicTacToeV1 {
 											|| (b2 == 2 && b5 == 2 && b8 == 2) || (b3 == 2 && b6 == 2 && b9 == 2)
 											|| (b1 == 2 && b5 == 2 && b9 == 2) || (b3 == 2 && b5 == 2 && b7 == 2)) {
 										frame.getContentPane().remove(lblp1turn);
-										lblPlayer2Wins.setText(name2 + " Wins!");
+										lblPlayer2Wins.setText(player2name + " Wins!");
 										lblPlayer2Wins.setFont(new Font("Lucida Bright", Font.PLAIN, 36));
 										lblPlayer2Wins.setBounds(20, 67, 500, 60);
 										frame.getContentPane().add(lblPlayer2Wins);
@@ -13422,7 +13521,7 @@ public class TicTacToeV1 {
 											|| (b2 == 1 && b5 == 1 && b8 == 1) || (b3 == 1 && b6 == 1 && b9 == 1)
 											|| (b1 == 1 && b5 == 1 && b9 == 1) || (b3 == 1 && b5 == 1 && b7 == 1)) {
 										frame.getContentPane().remove(lblp2turn);
-										lblPlayer1Wins.setText(name1 + " Wins!");
+										lblPlayer1Wins.setText(player1name + " Wins!");
 										lblPlayer1Wins.setFont(new Font("Lucida Bright", Font.PLAIN, 36));
 										lblPlayer1Wins.setBounds(20, 67, 500, 60);
 										frame.getContentPane().add(lblPlayer1Wins);
@@ -13435,7 +13534,7 @@ public class TicTacToeV1 {
 											|| (b2 == 2 && b5 == 2 && b8 == 2) || (b3 == 2 && b6 == 2 && b9 == 2)
 											|| (b1 == 2 && b5 == 2 && b9 == 2) || (b3 == 2 && b5 == 2 && b7 == 2)) {
 										frame.getContentPane().remove(lblp1turn);
-										lblPlayer2Wins.setText(name2 + " Wins!");
+										lblPlayer2Wins.setText(player2name + " Wins!");
 										lblPlayer2Wins.setFont(new Font("Lucida Bright", Font.PLAIN, 36));
 										lblPlayer2Wins.setBounds(20, 67, 500, 60);
 										frame.getContentPane().add(lblPlayer2Wins);
@@ -13494,7 +13593,7 @@ public class TicTacToeV1 {
 											|| (b2 == 1 && b5 == 1 && b8 == 1) || (b3 == 1 && b6 == 1 && b9 == 1)
 											|| (b1 == 1 && b5 == 1 && b9 == 1) || (b3 == 1 && b5 == 1 && b7 == 1)) {
 										frame.getContentPane().remove(lblp2turn);
-										lblPlayer1Wins.setText(name1 + " Wins!");
+										lblPlayer1Wins.setText(player1name + " Wins!");
 										lblPlayer1Wins.setFont(new Font("Lucida Bright", Font.PLAIN, 36));
 										lblPlayer1Wins.setBounds(20, 67, 500, 60);
 										frame.getContentPane().add(lblPlayer1Wins);
@@ -13507,7 +13606,7 @@ public class TicTacToeV1 {
 											|| (b2 == 2 && b5 == 2 && b8 == 2) || (b3 == 2 && b6 == 2 && b9 == 2)
 											|| (b1 == 2 && b5 == 2 && b9 == 2) || (b3 == 2 && b5 == 2 && b7 == 2)) {
 										frame.getContentPane().remove(lblp1turn);
-										lblPlayer2Wins.setText(name2 + " Wins!");
+										lblPlayer2Wins.setText(player2name + " Wins!");
 										lblPlayer2Wins.setFont(new Font("Lucida Bright", Font.PLAIN, 36));
 										lblPlayer2Wins.setBounds(20, 67, 500, 60);
 										frame.getContentPane().add(lblPlayer2Wins);
@@ -13566,7 +13665,7 @@ public class TicTacToeV1 {
 											|| (b2 == 1 && b5 == 1 && b8 == 1) || (b3 == 1 && b6 == 1 && b9 == 1)
 											|| (b1 == 1 && b5 == 1 && b9 == 1) || (b3 == 1 && b5 == 1 && b7 == 1)) {
 										frame.getContentPane().remove(lblp2turn);
-										lblPlayer1Wins.setText(name1 + " Wins!");
+										lblPlayer1Wins.setText(player1name + " Wins!");
 										lblPlayer1Wins.setFont(new Font("Lucida Bright", Font.PLAIN, 36));
 										lblPlayer1Wins.setBounds(20, 67, 500, 60);
 										frame.getContentPane().add(lblPlayer1Wins);
@@ -13579,7 +13678,7 @@ public class TicTacToeV1 {
 											|| (b2 == 2 && b5 == 2 && b8 == 2) || (b3 == 2 && b6 == 2 && b9 == 2)
 											|| (b1 == 2 && b5 == 2 && b9 == 2) || (b3 == 2 && b5 == 2 && b7 == 2)) {
 										frame.getContentPane().remove(lblp1turn);
-										lblPlayer2Wins.setText(name2 + " Wins!");
+										lblPlayer2Wins.setText(player2name + " Wins!");
 										lblPlayer2Wins.setFont(new Font("Lucida Bright", Font.PLAIN, 36));
 										lblPlayer2Wins.setBounds(20, 67, 500, 60);
 										frame.getContentPane().add(lblPlayer2Wins);
@@ -13640,7 +13739,7 @@ public class TicTacToeV1 {
 											|| (b2 == 1 && b5 == 1 && b8 == 1) || (b3 == 1 && b6 == 1 && b9 == 1)
 											|| (b1 == 1 && b5 == 1 && b9 == 1) || (b3 == 1 && b5 == 1 && b7 == 1)) {
 										frame.getContentPane().remove(lblp2turn);
-										lblPlayer1Wins.setText(name1 + " Wins!");
+										lblPlayer1Wins.setText(player1name + " Wins!");
 										lblPlayer1Wins.setFont(new Font("Lucida Bright", Font.PLAIN, 36));
 										lblPlayer1Wins.setBounds(20, 67, 500, 60);
 										frame.getContentPane().add(lblPlayer1Wins);
@@ -13653,7 +13752,7 @@ public class TicTacToeV1 {
 											|| (b2 == 2 && b5 == 2 && b8 == 2) || (b3 == 2 && b6 == 2 && b9 == 2)
 											|| (b1 == 2 && b5 == 2 && b9 == 2) || (b3 == 2 && b5 == 2 && b7 == 2)) {
 										frame.getContentPane().remove(lblp1turn);
-										lblPlayer2Wins.setText(name2 + " Wins!");
+										lblPlayer2Wins.setText(player2name + " Wins!");
 										lblPlayer2Wins.setFont(new Font("Lucida Bright", Font.PLAIN, 36));
 										lblPlayer2Wins.setBounds(20, 67, 500, 60);
 										frame.getContentPane().add(lblPlayer2Wins);
