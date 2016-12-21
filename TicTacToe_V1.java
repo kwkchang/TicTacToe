@@ -150,55 +150,24 @@ public class TicTacToe_V1 {
 						btn9.setBounds(385, 467, 141, 141);
 						frame.getContentPane().add(btn9);
 						
-						JButton btnreplay = new JButton("Replay");
-						btnreplay.setFont(new Font("Lucida Bright", Font.PLAIN, 26));
-						btnreplay.setBounds(56, 650, 141, 40);
-						frame.getContentPane().add(btnreplay);
+						JButton btnquit = new JButton("I Quit!");
+						btnquit.setFont(new Font("Lucida Bright", Font.PLAIN, 26));
+						btnquit.setBounds(56, 650, 141, 40);
+						frame.getContentPane().add(btnquit);
+						
+						btnquit.addActionListener(new ActionListener() {
+							
+							public void actionPerformed(ActionEvent arg0) {
+								
+								frame.dispose();
+								
+							}
+						});
 
 						JButton btnmenu = new JButton("Menu");
 						btnmenu.setFont(new Font("Lucida Bright", Font.PLAIN, 26));
 						btnmenu.setBounds(385, 650, 141, 40);
 						frame.getContentPane().add(btnmenu);
-						
-						btnreplay.addActionListener(new ActionListener() {
-							
-							public void actionPerformed(ActionEvent arg0) {
-								
-								frame.getContentPane().removeAll();
-								
-								turn = 1;
-								clicked1 = clicked2 = clicked3 = clicked4 = clicked5 = clicked6 = clicked7 = clicked8 = clicked9 = false;
-
-								b1 = b2 = b3 = b4 = b5 = b6 = b7 = b8 = b9 = 0;
-
-								btn1.setLabel("");
-								btn2.setLabel("");
-								btn3.setLabel("");
-								btn4.setLabel("");
-								btn5.setLabel("");
-								btn6.setLabel("");
-								btn7.setLabel("");
-								btn8.setLabel("");
-								btn9.setLabel("");
-							
-								frame.getContentPane().add(btn1);
-								frame.getContentPane().add(btn2);
-								frame.getContentPane().add(btn3);
-								frame.getContentPane().add(btn4);
-								frame.getContentPane().add(btn5);
-								frame.getContentPane().add(btn6);
-								frame.getContentPane().add(btn7);
-								frame.getContentPane().add(btn8);
-								frame.getContentPane().add(btn9);
-								frame.getContentPane().add(btnreplay);
-								frame.getContentPane().add(btnmenu);
-								
-								frame.revalidate();
-								frame.repaint();
-								
-							}
-						});
-						
 						
 						btnmenu.addActionListener(new ActionListener() {
 							
@@ -6071,95 +6040,20 @@ public class TicTacToe_V1 {
 						btn9.setBounds(385, 467, 141, 141);
 						frame.getContentPane().add(btn9);
 						
-						JButton btnreplay = new JButton("Replay");
-						btnreplay.setFont(new Font("Lucida Bright", Font.PLAIN, 26));
-						btnreplay.setBounds(56, 650, 141, 40);
-						frame.getContentPane().add(btnreplay);
-
-						JButton btnmenu = new JButton("Menu");
-						btnmenu.setFont(new Font("Lucida Bright", Font.PLAIN, 26));
-						btnmenu.setBounds(385, 650, 141, 40);
-						frame.getContentPane().add(btnmenu);
+						JButton btnquit = new JButton("I Quit!");
+						btnquit.setFont(new Font("Lucida Bright", Font.PLAIN, 26));
+						btnquit.setBounds(56, 650, 141, 40);
+						frame.getContentPane().add(btnquit);
 						
-						btnreplay.addActionListener(new ActionListener() {
+						btnquit.addActionListener(new ActionListener() {
 							
 							public void actionPerformed(ActionEvent arg0) {
 								
-								frame.getContentPane().removeAll();
-								
-								turn = 1;
-								clicked1 = clicked2 = clicked3 = clicked4 = clicked6 = clicked7 = clicked8 = clicked9 = false;
-
-								b1 = b2 = b3 = b4 = b6 = b7 = b8 = b9 = 0;
-
-								btn1.setLabel("");
-								btn2.setLabel("");
-								btn3.setLabel("");
-								btn4.setLabel("");
-								btn5.setLabel("");
-								btn6.setLabel("");
-								btn7.setLabel("");
-								btn8.setLabel("");
-								btn9.setLabel("");
-								
-								btn5.setLabel("O"); // IMPORTANT
-								btn5.setForeground(Color.BLUE);
-								btn5.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 99));
-								turn++;
-								clicked5 = true;
-								b5 = 2;
-							
-								frame.getContentPane().add(btn1);
-								frame.getContentPane().add(btn2);
-								frame.getContentPane().add(btn3);
-								frame.getContentPane().add(btn4);
-								frame.getContentPane().add(btn5);
-								frame.getContentPane().add(btn6);
-								frame.getContentPane().add(btn7);
-								frame.getContentPane().add(btn8);
-								frame.getContentPane().add(btn9);
-								frame.getContentPane().add(btnreplay);
-								frame.getContentPane().add(btnmenu);
-								
-								frame.revalidate();
-								frame.repaint();
+								frame.dispose();
 								
 							}
 						});
-						
-						
-						btnmenu.addActionListener(new ActionListener() {
-							
-							public void actionPerformed(ActionEvent arg0) {
-								
-								frame.getContentPane().removeAll();
-								
-								turn = 1;
-								clicked1 = clicked2 = clicked3 = clicked4 = clicked5 = clicked6 = clicked7 = clicked8 = clicked9 = false;
-
-								b1 = b2 = b3 = b4 = b5= b6 = b7 = b8 = b9 = 0;
-
-								btn1.setLabel("");
-								btn2.setLabel("");
-								btn3.setLabel("");
-								btn4.setLabel("");
-								btn5.setLabel("");
-								btn6.setLabel("");
-								btn7.setLabel("");
-								btn8.setLabel("");
-								btn9.setLabel("");
-
-							
-								frame.getContentPane().add(lblWelcome);				
-								frame.getContentPane().add(btn1Player);
-								frame.getContentPane().add(btn2Players);
-								
-								frame.revalidate();
-								frame.repaint();
-								
-							}
-						});
-
+											
 						btn5.setLabel("O"); // IMPORTANT
 						btn5.setForeground(Color.BLUE);
 						btn5.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 99));
@@ -12266,6 +12160,12 @@ public class TicTacToe_V1 {
 						frame.revalidate();
 						frame.repaint();
 						
+						JLabel lblscore = new JLabel(name1 + ": " + winCount1
+								+ "          " + name2 + ": " + winCount2);
+						lblscore.setFont(new Font("Lucida Bright", Font.PLAIN, 22));
+						lblscore.setBounds(56, 20, 500, 60);
+						frame.getContentPane().add(lblscore);
+						
 						btnmenu.addActionListener(new ActionListener() {
 					
 							public void actionPerformed(ActionEvent arg0) {
@@ -12274,8 +12174,9 @@ public class TicTacToe_V1 {
 								
 								turn = 1;
 								clicked1 = clicked2 = clicked3 = clicked4 = clicked5 = clicked6 = clicked7 = clicked8 = clicked9 = false;
-
 								b1 = b2 = b3 = b4 = b5 = b6 = b7 = b8 = b9 = 0;
+								winCount1 = 0;
+								winCount2 = 0;
 
 								btn1.setLabel("");
 								btn2.setLabel("");
@@ -12286,8 +12187,9 @@ public class TicTacToe_V1 {
 								btn7.setLabel("");
 								btn8.setLabel("");
 								btn9.setLabel("");
-
 							
+								frame.revalidate();
+								frame.repaint();
 								frame.getContentPane().add(lblWelcome);				
 								frame.getContentPane().add(btn1Player);
 								frame.getContentPane().add(btn2Players);
@@ -12307,8 +12209,9 @@ public class TicTacToe_V1 {
 								turn = 1;
 								clicked1 = clicked2 = clicked3 = clicked4 = clicked5 = clicked6 = clicked7 = clicked8 = clicked9 = false;
 
-								int b1 = b2 = b3 = b4 = b5 = b6 = b7 = b8 = b9 = 0;
+								b1 = b2 = b3 = b4 = b5 = b6 = b7 = b8 = b9 = 0;
 
+								
 								btn1.setLabel("");
 								btn2.setLabel("");
 								btn3.setLabel("");
@@ -12378,6 +12281,11 @@ public class TicTacToe_V1 {
 										frame.repaint();
 										clicked1 = clicked2 = clicked3 = clicked4 = clicked5 = clicked6 = clicked7 = clicked8 = clicked9 = true;
 										winCount1++;
+										lblscore.setText(name1 + ": " + winCount1
+												+ "          " + name2 + ": " + winCount2);
+										frame.getContentPane().add(lblscore);
+										frame.revalidate();
+										frame.repaint();
 									}
 
 									else if ((b1 == 2 && b2 == 2 && b3 == 2) || (b4 == 2 && b5 == 2 && b6 == 2)
@@ -12393,6 +12301,11 @@ public class TicTacToe_V1 {
 										frame.repaint();
 										clicked1 = clicked2 = clicked3 = clicked4 = clicked5 = clicked6 = clicked7 = clicked8 = clicked9 = true;
 										winCount2++;
+										lblscore.setText(name1 + ": " + winCount1
+												+ "          " + name2 + ": " + winCount2);
+										frame.getContentPane().add(lblscore);
+										frame.revalidate();
+										frame.repaint();
 									} else if (clicked1 == true && clicked2 == true && clicked3 == true
 											&& clicked4 == true && clicked5 == true && clicked6 == true
 											&& clicked7 == true && clicked8 == true && clicked9 == true) {
@@ -12454,6 +12367,11 @@ public class TicTacToe_V1 {
 										frame.repaint();
 										clicked1 = clicked2 = clicked3 = clicked4 = clicked5 = clicked6 = clicked7 = clicked8 = clicked9 = true;
 										winCount1++;
+										lblscore.setText(name1 + ": " + winCount1
+												+ "          " + name2 + ": " + winCount2);
+										frame.getContentPane().add(lblscore);
+										frame.revalidate();
+										frame.repaint();
 									} else if ((b1 == 2 && b2 == 2 && b3 == 2) || (b4 == 2 && b5 == 2 && b6 == 2)
 											|| (b7 == 2 && b8 == 2 && b9 == 2) || (b1 == 2 && b4 == 2 && b7 == 2)
 											|| (b2 == 2 && b5 == 2 && b8 == 2) || (b3 == 2 && b6 == 2 && b9 == 2)
@@ -12467,6 +12385,11 @@ public class TicTacToe_V1 {
 										frame.repaint();
 										clicked1 = clicked2 = clicked3 = clicked4 = clicked5 = clicked6 = clicked7 = clicked8 = clicked9 = true;
 										winCount2++;
+										lblscore.setText(name1 + ": " + winCount1
+												+ "          " + name2 + ": " + winCount2);
+										frame.getContentPane().add(lblscore);
+										frame.revalidate();
+										frame.repaint();
 									} else if (clicked1 == true && clicked2 == true && clicked3 == true
 											&& clicked4 == true && clicked5 == true && clicked6 == true
 											&& clicked7 == true && clicked8 == true && clicked9 == true) {
@@ -12525,6 +12448,11 @@ public class TicTacToe_V1 {
 										frame.repaint();
 										clicked1 = clicked2 = clicked3 = clicked4 = clicked5 = clicked6 = clicked7 = clicked8 = clicked9 = true;
 										winCount1++;
+										lblscore.setText(name1 + ": " + winCount1
+												+ "          " + name2 + ": " + winCount2);
+										frame.getContentPane().add(lblscore);
+										frame.revalidate();
+										frame.repaint();
 									} else if ((b1 == 2 && b2 == 2 && b3 == 2) || (b4 == 2 && b5 == 2 && b6 == 2)
 											|| (b7 == 2 && b8 == 2 && b9 == 2) || (b1 == 2 && b4 == 2 && b7 == 2)
 											|| (b2 == 2 && b5 == 2 && b8 == 2) || (b3 == 2 && b6 == 2 && b9 == 2)
@@ -12538,6 +12466,11 @@ public class TicTacToe_V1 {
 										frame.repaint();
 										clicked1 = clicked2 = clicked3 = clicked4 = clicked5 = clicked6 = clicked7 = clicked8 = clicked9 = true;
 										winCount2++;
+										lblscore.setText(name1 + ": " + winCount1
+												+ "          " + name2 + ": " + winCount2);
+										frame.getContentPane().add(lblscore);
+										frame.revalidate();
+										frame.repaint();
 									} else if (clicked1 == true && clicked2 == true && clicked3 == true
 											&& clicked4 == true && clicked5 == true && clicked6 == true
 											&& clicked7 == true && clicked8 == true && clicked9 == true) {
@@ -12596,6 +12529,11 @@ public class TicTacToe_V1 {
 										frame.repaint();
 										clicked1 = clicked2 = clicked3 = clicked4 = clicked5 = clicked6 = clicked7 = clicked8 = clicked9 = true;
 										winCount1++;
+										lblscore.setText(name1 + ": " + winCount1
+												+ "          " + name2 + ": " + winCount2);
+										frame.getContentPane().add(lblscore);
+										frame.revalidate();
+										frame.repaint();
 									} else if ((b1 == 2 && b2 == 2 && b3 == 2) || (b4 == 2 && b5 == 2 && b6 == 2)
 											|| (b7 == 2 && b8 == 2 && b9 == 2) || (b1 == 2 && b4 == 2 && b7 == 2)
 											|| (b2 == 2 && b5 == 2 && b8 == 2) || (b3 == 2 && b6 == 2 && b9 == 2)
@@ -12609,6 +12547,11 @@ public class TicTacToe_V1 {
 										frame.repaint();
 										clicked1 = clicked2 = clicked3 = clicked4 = clicked5 = clicked6 = clicked7 = clicked8 = clicked9 = true;
 										winCount2++;
+										lblscore.setText(name1 + ": " + winCount1
+												+ "          " + name2 + ": " + winCount2);
+										frame.getContentPane().add(lblscore);
+										frame.revalidate();
+										frame.repaint();
 									} else if (clicked1 == true && clicked2 == true && clicked3 == true
 											&& clicked4 == true && clicked5 == true && clicked6 == true
 											&& clicked7 == true && clicked8 == true && clicked9 == true) {
@@ -12667,6 +12610,11 @@ public class TicTacToe_V1 {
 										frame.repaint();
 										clicked1 = clicked2 = clicked3 = clicked4 = clicked5 = clicked6 = clicked7 = clicked8 = clicked9 = true;
 										winCount1++;
+										lblscore.setText(name1 + ": " + winCount1
+												+ "          " + name2 + ": " + winCount2);
+										frame.getContentPane().add(lblscore);
+										frame.revalidate();
+										frame.repaint();
 									} else if ((b1 == 2 && b2 == 2 && b3 == 2) || (b4 == 2 && b5 == 2 && b6 == 2)
 											|| (b7 == 2 && b8 == 2 && b9 == 2) || (b1 == 2 && b4 == 2 && b7 == 2)
 											|| (b2 == 2 && b5 == 2 && b8 == 2) || (b3 == 2 && b6 == 2 && b9 == 2)
@@ -12680,6 +12628,11 @@ public class TicTacToe_V1 {
 										frame.repaint();
 										clicked1 = clicked2 = clicked3 = clicked4 = clicked5 = clicked6 = clicked7 = clicked8 = clicked9 = true;
 										winCount2++;
+										lblscore.setText(name1 + ": " + winCount1
+												+ "          " + name2 + ": " + winCount2);
+										frame.getContentPane().add(lblscore);
+										frame.revalidate();
+										frame.repaint();
 									} else if (clicked1 == true && clicked2 == true && clicked3 == true
 											&& clicked4 == true && clicked5 == true && clicked6 == true
 											&& clicked7 == true && clicked8 == true && clicked9 == true) {
@@ -12738,6 +12691,11 @@ public class TicTacToe_V1 {
 										frame.repaint();
 										clicked1 = clicked2 = clicked3 = clicked4 = clicked5 = clicked6 = clicked7 = clicked8 = clicked9 = true;
 										winCount1++;
+										lblscore.setText(name1 + ": " + winCount1
+												+ "          " + name2 + ": " + winCount2);
+										frame.getContentPane().add(lblscore);
+										frame.revalidate();
+										frame.repaint();
 									} else if ((b1 == 2 && b2 == 2 && b3 == 2) || (b4 == 2 && b5 == 2 && b6 == 2)
 											|| (b7 == 2 && b8 == 2 && b9 == 2) || (b1 == 2 && b4 == 2 && b7 == 2)
 											|| (b2 == 2 && b5 == 2 && b8 == 2) || (b3 == 2 && b6 == 2 && b9 == 2)
@@ -12751,6 +12709,11 @@ public class TicTacToe_V1 {
 										frame.repaint();
 										clicked1 = clicked2 = clicked3 = clicked4 = clicked5 = clicked6 = clicked7 = clicked8 = clicked9 = true;
 										winCount2++;
+										lblscore.setText(name1 + ": " + winCount1
+												+ "          " + name2 + ": " + winCount2);
+										frame.getContentPane().add(lblscore);
+										frame.revalidate();
+										frame.repaint();
 									} else if (clicked1 == true && clicked2 == true && clicked3 == true
 											&& clicked4 == true && clicked5 == true && clicked6 == true
 											&& clicked7 == true && clicked8 == true && clicked9 == true) {
@@ -12809,6 +12772,11 @@ public class TicTacToe_V1 {
 										frame.repaint();
 										clicked1 = clicked2 = clicked3 = clicked4 = clicked5 = clicked6 = clicked7 = clicked8 = clicked9 = true;
 										winCount1++;
+										lblscore.setText(name1 + ": " + winCount1
+												+ "          " + name2 + ": " + winCount2);
+										frame.getContentPane().add(lblscore);
+										frame.revalidate();
+										frame.repaint();
 									} else if ((b1 == 2 && b2 == 2 && b3 == 2) || (b4 == 2 && b5 == 2 && b6 == 2)
 											|| (b7 == 2 && b8 == 2 && b9 == 2) || (b1 == 2 && b4 == 2 && b7 == 2)
 											|| (b2 == 2 && b5 == 2 && b8 == 2) || (b3 == 2 && b6 == 2 && b9 == 2)
@@ -12822,6 +12790,11 @@ public class TicTacToe_V1 {
 										frame.repaint();
 										clicked1 = clicked2 = clicked3 = clicked4 = clicked5 = clicked6 = clicked7 = clicked8 = clicked9 = true;
 										winCount2++;
+										lblscore.setText(name1 + ": " + winCount1
+												+ "          " + name2 + ": " + winCount2);
+										frame.getContentPane().add(lblscore);
+										frame.revalidate();
+										frame.repaint();
 									} else if (clicked1 == true && clicked2 == true && clicked3 == true
 											&& clicked4 == true && clicked5 == true && clicked6 == true
 											&& clicked7 == true && clicked8 == true && clicked9 == true) {
@@ -12880,6 +12853,11 @@ public class TicTacToe_V1 {
 										frame.repaint();
 										clicked1 = clicked2 = clicked3 = clicked4 = clicked5 = clicked6 = clicked7 = clicked8 = clicked9 = true;
 										winCount1++;
+										lblscore.setText(name1 + ": " + winCount1
+												+ "          " + name2 + ": " + winCount2);
+										frame.getContentPane().add(lblscore);
+										frame.revalidate();
+										frame.repaint();
 									} else if ((b1 == 2 && b2 == 2 && b3 == 2) || (b4 == 2 && b5 == 2 && b6 == 2)
 											|| (b7 == 2 && b8 == 2 && b9 == 2) || (b1 == 2 && b4 == 2 && b7 == 2)
 											|| (b2 == 2 && b5 == 2 && b8 == 2) || (b3 == 2 && b6 == 2 && b9 == 2)
@@ -12893,6 +12871,11 @@ public class TicTacToe_V1 {
 										frame.repaint();
 										clicked1 = clicked2 = clicked3 = clicked4 = clicked5 = clicked6 = clicked7 = clicked8 = clicked9 = true;
 										winCount2++;
+										lblscore.setText(name1 + ": " + winCount1
+												+ "          " + name2 + ": " + winCount2);
+										frame.getContentPane().add(lblscore);
+										frame.revalidate();
+										frame.repaint();
 									} else if (clicked1 == true && clicked2 == true && clicked3 == true
 											&& clicked4 == true && clicked5 == true && clicked6 == true
 											&& clicked7 == true && clicked8 == true && clicked9 == true) {
@@ -12951,6 +12934,11 @@ public class TicTacToe_V1 {
 										frame.repaint();
 										clicked1 = clicked2 = clicked3 = clicked4 = clicked5 = clicked6 = clicked7 = clicked8 = clicked9 = true;
 										winCount1++;
+										lblscore.setText(name1 + ": " + winCount1
+												+ "          " + name2 + ": " + winCount2);
+										frame.getContentPane().add(lblscore);
+										frame.revalidate();
+										frame.repaint();
 									} else if ((b1 == 2 && b2 == 2 && b3 == 2) || (b4 == 2 && b5 == 2 && b6 == 2)
 											|| (b7 == 2 && b8 == 2 && b9 == 2) || (b1 == 2 && b4 == 2 && b7 == 2)
 											|| (b2 == 2 && b5 == 2 && b8 == 2) || (b3 == 2 && b6 == 2 && b9 == 2)
@@ -12964,6 +12952,11 @@ public class TicTacToe_V1 {
 										frame.repaint();
 										clicked1 = clicked2 = clicked3 = clicked4 = clicked5 = clicked6 = clicked7 = clicked8 = clicked9 = true;
 										winCount2++;
+										lblscore.setText(name1 + ": " + winCount1
+												+ "          " + name2 + ": " + winCount2);
+										frame.getContentPane().add(lblscore);
+										frame.revalidate();
+										frame.repaint();
 									}
 
 									else if (clicked1 == true && clicked2 == true && clicked3 == true
