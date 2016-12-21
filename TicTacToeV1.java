@@ -12996,6 +12996,7 @@ public class TicTacToeV1 {
 						frame.repaint();
 						
 						btnreplay.addActionListener(new ActionListener() {
+							@SuppressWarnings({ "deprecation", "unused" })
 							public void actionPerformed(ActionEvent arg0) {
 								
 								turn = 1;
