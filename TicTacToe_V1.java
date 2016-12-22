@@ -173,6 +173,24 @@ public class TicTacToe_V1 {
 						JButton btn9 = new JButton("");
 						btn9.setBounds(385, 467, 141, 141);
 						frame.getContentPane().add(btn9);
+						
+						//Creates a button called ragequit
+						JButton ragequit = new JButton("RAGE QUIT!");
+						ragequit.setForeground(Color.RED);
+						ragequit.setFont(new Font("Lucida Bright", Font.BOLD, 25));
+						ragequit.setBounds(197, 650, 188, 40);
+						frame.getContentPane().add(ragequit);
+
+						//What happens when the button is clicked
+						ragequit.addActionListener(new ActionListener() {
+							
+							public void actionPerformed(ActionEvent arg0) {
+								
+								//Closes the frame
+								frame.dispose();
+								
+							}
+						});
 
 						frame.revalidate();
 						frame.repaint();
@@ -6480,6 +6498,24 @@ public class TicTacToe_V1 {
 						JButton btn9 = new JButton("");
 						btn9.setBounds(385, 467, 141, 141);
 						frame.getContentPane().add(btn9);
+						
+						//Creates a button called ragequit
+						JButton ragequit = new JButton("RAGE QUIT!");
+						ragequit.setForeground(Color.RED);
+						ragequit.setFont(new Font("Lucida Bright", Font.BOLD, 25));
+						ragequit.setBounds(197, 650, 188, 40);
+						frame.getContentPane().add(ragequit);
+
+						//What happens when the button is clicked
+						ragequit.addActionListener(new ActionListener() {
+							
+							public void actionPerformed(ActionEvent arg0) {
+								
+								//Closes the frame
+								frame.dispose();
+								
+							}
+						});
 
 						btn5.setLabel("O"); // IMPORTANT
 						btn5.setForeground(Color.BLUE);
@@ -13152,7 +13188,7 @@ public class TicTacToe_V1 {
 						 * 	(turn++), clicked1 is assigned the value of true, and "b1" is assigned the value of 2 (Which means that it is "O").  Then lblp2turn is removed
 						 *  and lblp1turn is added, which indicated that it is now player 1's turn
 						 *  
-						 *  The second if statement is true if the turn number is 5 or greater
+						 *  The second if statement is true if the turn number is 5 or greater and all of the buttons have not been clicked yet.
 						 *  
 						 *  The next if statement is nested, which means that is only executes when the if statement above is true.  It checks to see if there are three X's
 						 *  in a row/column/diagonal anywhere.  It does this by checking to see if all three of the buttons (i.e. b1, b2, b3 OR b2 in any given row all have 
@@ -13198,7 +13234,9 @@ public class TicTacToe_V1 {
 									frame.repaint();
 
 								}
-								if (turn >= 5) {
+								if ((turn >= 5) && !(clicked1 == true && clicked2 == true && clicked3 == true
+										&& clicked4 == true && clicked5 == true && clicked6 == true
+										&& clicked7 == true && clicked8 == true && clicked9 == true)) {
 									if ((b1 == 1 && b2 == 1 && b3 == 1) || (b4 == 1 && b5 == 1 && b6 == 1)
 											|| (b7 == 1 && b8 == 1 && b9 == 1) || (b1 == 1 && b4 == 1 && b7 == 1)
 											|| (b2 == 1 && b5 == 1 && b8 == 1) || (b3 == 1 && b6 == 1 && b9 == 1)
@@ -13211,6 +13249,10 @@ public class TicTacToe_V1 {
 										frame.revalidate();
 										frame.repaint();
 										clicked1 = clicked2 = clicked3 = clicked4 = clicked5 = clicked6 = clicked7 = clicked8 = clicked9 = true;
+										winCount1++;
+										lblscore.setText(player1name + ": " + winCount1
+												+ "          " + player2name + ": " + winCount2);
+										frame.getContentPane().add(lblscore);
 									}
 										
 									else if ((b1 == 2 && b2 == 2 && b3 == 2) || (b4 == 2 && b5 == 2 && b6 == 2)
@@ -13225,6 +13267,10 @@ public class TicTacToe_V1 {
 										frame.revalidate();
 										frame.repaint();
 										clicked1 = clicked2 = clicked3 = clicked4 = clicked5 = clicked6 = clicked7 = clicked8 = clicked9 = true;
+										winCount2++;
+										lblscore.setText(player1name + ": " + winCount1
+												+ "          " + player2name + ": " + winCount2);
+										frame.getContentPane().add(lblscore);
 									}
 									else if (clicked1 == true && clicked2 == true && clicked3 == true
 											&& clicked4 == true && clicked5 == true && clicked6 == true
@@ -13278,7 +13324,9 @@ public class TicTacToe_V1 {
 									frame.repaint();
 								}
 
-								if (turn >= 5) {
+								if ((turn >= 5) && !(clicked1 == true && clicked2 == true && clicked3 == true
+										&& clicked4 == true && clicked5 == true && clicked6 == true
+										&& clicked7 == true && clicked8 == true && clicked9 == true)) {
 									if ((b1 == 1 && b2 == 1 && b3 == 1) || (b4 == 1 && b5 == 1 && b6 == 1)
 											|| (b7 == 1 && b8 == 1 && b9 == 1) || (b1 == 1 && b4 == 1 && b7 == 1)
 											|| (b2 == 1 && b5 == 1 && b8 == 1) || (b3 == 1 && b6 == 1 && b9 == 1)
@@ -13361,7 +13409,9 @@ public class TicTacToe_V1 {
 									frame.revalidate();
 									frame.repaint();
 								}
-								if (turn >= 5) {
+								if ((turn >= 5) && !(clicked1 == true && clicked2 == true && clicked3 == true
+										&& clicked4 == true && clicked5 == true && clicked6 == true
+										&& clicked7 == true && clicked8 == true && clicked9 == true)) {
 									if ((b1 == 1 && b2 == 1 && b3 == 1) || (b4 == 1 && b5 == 1 && b6 == 1)
 											|| (b7 == 1 && b8 == 1 && b9 == 1) || (b1 == 1 && b4 == 1 && b7 == 1)
 											|| (b2 == 1 && b5 == 1 && b8 == 1) || (b3 == 1 && b6 == 1 && b9 == 1)
@@ -13443,7 +13493,9 @@ public class TicTacToe_V1 {
 									frame.revalidate();
 									frame.repaint();
 								}
-								if (turn >= 5) {
+								if ((turn >= 5) && !(clicked1 == true && clicked2 == true && clicked3 == true
+										&& clicked4 == true && clicked5 == true && clicked6 == true
+										&& clicked7 == true && clicked8 == true && clicked9 == true)) {
 									if ((b1 == 1 && b2 == 1 && b3 == 1) || (b4 == 1 && b5 == 1 && b6 == 1)
 											|| (b7 == 1 && b8 == 1 && b9 == 1) || (b1 == 1 && b4 == 1 && b7 == 1)
 											|| (b2 == 1 && b5 == 1 && b8 == 1) || (b3 == 1 && b6 == 1 && b9 == 1)
@@ -13527,7 +13579,9 @@ public class TicTacToe_V1 {
 									frame.revalidate();
 									frame.repaint();
 								}
-								if (turn >= 5) {
+								if ((turn >= 5) && !(clicked1 == true && clicked2 == true && clicked3 == true
+										&& clicked4 == true && clicked5 == true && clicked6 == true
+										&& clicked7 == true && clicked8 == true && clicked9 == true)) {
 									if ((b1 == 1 && b2 == 1 && b3 == 1) || (b4 == 1 && b5 == 1 && b6 == 1)
 											|| (b7 == 1 && b8 == 1 && b9 == 1) || (b1 == 1 && b4 == 1 && b7 == 1)
 											|| (b2 == 1 && b5 == 1 && b8 == 1) || (b3 == 1 && b6 == 1 && b9 == 1)
@@ -13611,7 +13665,9 @@ public class TicTacToe_V1 {
 									frame.revalidate();
 									frame.repaint();
 								}
-								if (turn >= 5) {
+								if ((turn >= 5) && !(clicked1 == true && clicked2 == true && clicked3 == true
+										&& clicked4 == true && clicked5 == true && clicked6 == true
+										&& clicked7 == true && clicked8 == true && clicked9 == true)) {
 									if ((b1 == 1 && b2 == 1 && b3 == 1) || (b4 == 1 && b5 == 1 && b6 == 1)
 											|| (b7 == 1 && b8 == 1 && b9 == 1) || (b1 == 1 && b4 == 1 && b7 == 1)
 											|| (b2 == 1 && b5 == 1 && b8 == 1) || (b3 == 1 && b6 == 1 && b9 == 1)
@@ -13695,7 +13751,9 @@ public class TicTacToe_V1 {
 									frame.revalidate();
 									frame.repaint();
 								}
-								if (turn >= 5) {
+								if ((turn >= 5) && !(clicked1 == true && clicked2 == true && clicked3 == true
+										&& clicked4 == true && clicked5 == true && clicked6 == true
+										&& clicked7 == true && clicked8 == true && clicked9 == true)) {
 									if ((b1 == 1 && b2 == 1 && b3 == 1) || (b4 == 1 && b5 == 1 && b6 == 1)
 											|| (b7 == 1 && b8 == 1 && b9 == 1) || (b1 == 1 && b4 == 1 && b7 == 1)
 											|| (b2 == 1 && b5 == 1 && b8 == 1) || (b3 == 1 && b6 == 1 && b9 == 1)
@@ -13779,7 +13837,9 @@ public class TicTacToe_V1 {
 									frame.revalidate();
 									frame.repaint();
 								}
-								if (turn >= 5) {
+								if ((turn >= 5) && !(clicked1 == true && clicked2 == true && clicked3 == true
+										&& clicked4 == true && clicked5 == true && clicked6 == true
+										&& clicked7 == true && clicked8 == true && clicked9 == true)) {
 									if ((b1 == 1 && b2 == 1 && b3 == 1) || (b4 == 1 && b5 == 1 && b6 == 1)
 											|| (b7 == 1 && b8 == 1 && b9 == 1) || (b1 == 1 && b4 == 1 && b7 == 1)
 											|| (b2 == 1 && b5 == 1 && b8 == 1) || (b3 == 1 && b6 == 1 && b9 == 1)
@@ -13865,7 +13925,9 @@ public class TicTacToe_V1 {
 									frame.revalidate();
 									frame.repaint();
 								}
-								if (turn >= 5)
+								if ((turn >= 5) && !(clicked1 == true && clicked2 == true && clicked3 == true
+										&& clicked4 == true && clicked5 == true && clicked6 == true
+										&& clicked7 == true && clicked8 == true && clicked9 == true)) {
 									if ((b1 == 1 && b2 == 1 && b3 == 1) || (b4 == 1 && b5 == 1 && b6 == 1)
 											|| (b7 == 1 && b8 == 1 && b9 == 1) || (b1 == 1 && b4 == 1 && b7 == 1)
 											|| (b2 == 1 && b5 == 1 && b8 == 1) || (b3 == 1 && b6 == 1 && b9 == 1)
@@ -13915,6 +13977,7 @@ public class TicTacToe_V1 {
 										frame.revalidate();
 										frame.repaint();
 									}
+								}
 							}
 						});
 					}
